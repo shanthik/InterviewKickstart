@@ -1,0 +1,74 @@
+public class MaxHeap{
+  int[] a;
+  int capacity;
+  int size;
+  
+  public MaxHeap(int capacity){
+    this.capacity= capacity;
+    a = new int[capacity];
+    size=0;
+  }
+  
+  int getMax(){
+    if(size <= 0){
+      System.out.println("Heap Underflow");
+      return Integer.MIN_VALUE;
+    }
+     return a[0];
+  }
+  
+  void insert(int data){
+    if(capacity == size){
+      System.out.println("Heap Overflow");
+      return;
+     }
+     a[size++]= data;
+     reverseHeapify(size-1);
+  }
+    
+    void reverseMaxHeapify(int index){
+      int parentIndex=(index-1)/2;
+      if(a[parentIndex] < a[index]){
+          int swapped = swap(a,index,parentIndex);
+          reverseMaxHeapify(parentIndex);
+        }
+      }  
+      
+    void swap(int[] a,int i1,int i2){
+        int temp = a[i1];
+        a[i1]= a[i2];
+        a[i2]= temp;
+    }    
+    
+  void maxHeapify(int index){
+      int largest = index;
+      int lChild = 2*index+1;
+      int rChild = 2*index+2;
+      if((lChild < size) && (a[largest] < a[lChild]){
+        largest = lChild;
+      }
+      if((rChild < size) && (a[largest] < a[rChild]){
+        largest = rChild;
+      }
+      if(largest != index){
+        swap(a,index,largest);
+        maxHeapify(largest);
+      }
+  }
+  
+  
+  // alternate method name extractMax()
+  int delete(){
+    if(size <= 0){
+      System.out.println("Heap Underflow");
+      return Integer.MIN_VALUE;
+     }
+    int max = a[0];
+    a[0]=a[size-1];
+    a[size-1]=0;
+    size--;
+    maxHeapify(0);
+  }
+    
+  
+  }
