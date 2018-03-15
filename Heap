@@ -9,7 +9,7 @@ public class MaxHeap{
     size=0;
   }
   
-  int getMax(){
+  public int getMax(){
     if(size <= 0){
       System.out.println("Heap Underflow");
       return Integer.MIN_VALUE;
@@ -17,7 +17,7 @@ public class MaxHeap{
      return a[0];
   }
   
-  void insert(int data){
+  public void insert(int data){
     if(capacity == size){
       System.out.println("Heap Overflow");
       return;
@@ -26,7 +26,7 @@ public class MaxHeap{
      reverseHeapify(size-1);
   }
     
-    void reverseMaxHeapify(int index){
+   public  void reverseMaxHeapify(int index){
       int parentIndex=(index-1)/2;
       if(a[parentIndex] < a[index]){
           int swapped = swap(a,index,parentIndex);
@@ -40,7 +40,7 @@ public class MaxHeap{
         a[i2]= temp;
     }    
     
-  void maxHeapify(int index){
+  public void maxHeapify(int index){
       int largest = index;
       int lChild = 2*index+1;
       int rChild = 2*index+2;
@@ -58,7 +58,7 @@ public class MaxHeap{
   
   
   // alternate method name extractMax()
-  int delete(){
+ public  int delete(){
     if(size <= 0){
       System.out.println("Heap Underflow");
       return Integer.MIN_VALUE;
@@ -70,7 +70,7 @@ public class MaxHeap{
     maxHeapify(0);
   }
    
-   void buildHeap(int[] input,int k){
+  public  void buildHeap(int[] input,int k){
       this.capacity=k;
       this.size=0;
       a=new int[k];
